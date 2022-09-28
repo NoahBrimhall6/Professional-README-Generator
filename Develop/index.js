@@ -15,13 +15,13 @@
 // THEN I am taken to the corresponding section of the README
 
 // TODO: Include packages needed for this application
-const inquirer = requier('inquirer');
+const inquirer = require('inquirer');
 const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const messages = [
-  'What is the title of your README?',
+  'What is the title of your project?',
   'Provide a short description explaining the what, why, and how of your project',
   'What are the steps required to install your project?',
   'Provide instructions and examples for use.',
@@ -44,7 +44,7 @@ const names = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-  fs.appendFile(fileName, data, (err) => err ? console.error(err) : console.log(`Success! ${fileName} was appended!`));
+  fs.writeFile(fileName, data, (err) => err ? console.error(err) : console.log(`Success! ${fileName} was created!`));
 }
 
 // TODO: Create a function to initialize app
@@ -64,7 +64,7 @@ function init() {
   const license = {
     type: 'rawlist',
     message: 'Choose your license for the options below.',
-    options: ['MIT License', 'GNU GPLv3', 'Apache License 2.0'],
+    choices: ['MIT License', 'GNU GPLv3', 'Apache License 2.0'],
     name: 'license'
   }
 
@@ -73,7 +73,7 @@ function init() {
   inquirer
     .prompt(questions)
     .then((answers) => writeToFile('README.md', generateMarkdown(answers)))
-    .catch((error) => (error.isTtyError ? console.error('Prompt could not be rendered in the current environment') : console.error('Something went wrong')));
+    .catch((error) => (error.isTtyError ? console.error('Prompt could not be rendered in the current environment') : console.error('Something went wrong with inquirer')));
 }
 
 // Function call to initialize app
