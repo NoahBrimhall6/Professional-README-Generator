@@ -43,7 +43,9 @@ const names = [
 ]
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+  fs.appendFile(fileName, data, (err) => err ? console.error(err) : console.log(`Success! ${fileName} was appended!`));
+}
 
 // TODO: Create a function to initialize app
 function init() {
@@ -70,7 +72,7 @@ function init() {
 
   inquirer
     .prompt(questions)
-    .then((answers) => writeToFile(names[0], generateMarkdown(answers)))
+    .then((answers) => writeToFile('README.md', generateMarkdown(answers)))
     .catch((error) => (error.isTtyError ? console.error('Prompt could not be rendered in the current environment') : console.error('Something went wrong')));
 }
 
