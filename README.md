@@ -23,7 +23,9 @@
   
   Just asnwer the questions about your project and a professional looking README.md will be generated for you! This README.md was actually made with this application!
   
-  <add screenshots here>
+  Example video: https://drive.google.com/file/d/1Ne6wsIEZRXzswmzhyb3vt9Wd639HEYvo/view
+  
+  <img width="1280" alt="professional-readme-generator-screenshot" src="https://user-images.githubusercontent.com/109111849/192905509-574218a7-6d83-4b8f-83e8-b4a4bdced265.png">
   
   ## License
   
