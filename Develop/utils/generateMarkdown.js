@@ -1,29 +1,70 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {}
+function renderLicenseBadge(license) {
+  switch (license) {
+    case 'MIT license':
+      return 'https://img.shields.io/static/v1?label=license&message=MIT&color=informational';
+
+    case 'GNU GPLv3':
+      return 'https://img.shields.io/static/v1?label=license&message=GPL-3.0&color=informational';
+
+    case 'Apache License 2.0':
+      return 'https://img.shields.io/static/v1?label=license&message=<Apache-2.0>&color=informational';
+  }
+}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  switch (license) {
+    case 'MIT license':
+      return 'https://choosealicense.com/licenses/mit/';
+
+    case 'GNU GPLv3':
+      return 'https://www.gnu.org/licenses/gpl-3.0.html';
+
+    case 'Apache License 2.0':
+      return 'https://www.apache.org/licenses/LICENSE-2.0';
+  }
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+  switch (license) {
+    case 'MIT license':
+      return 'This projects is protected under the (MIT License)[https://choosealicense.com/licenses/mit/]';
+    
+    case 'GNU GPLv3':
+      return 'This project is protected under the (GNU General Public License v3.0)[https://www.gnu.org/licenses/gpl-3.0.html]';
+
+    case 'Apache License 2.0':
+      return 'This project is protected under the (Apache License 2.0)[https://www.apache.org/licenses/LICENSE-2.0]';
+
+    default: 
+      console.error('No licence provided');
+      return '';
+  }
+}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
 
+  ![license](${renderLicenseBadge(data.license)})
+
   ## Description
   
   ${data.description}
   
-  ## Table of Contents (Optional)
+  ## Table of Contents
   
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Credits](#credits)
   - [License](#license)
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+  - [Questions](#questions)
   
   ## Installation
   
@@ -35,30 +76,22 @@ function generateMarkdown(data) {
   
   <add screenshots here>
   
-  ## Credits
-  
-  ${contribution}
-  
   ## License
   
-  The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
+  ${renderLicenseSection(data.license)}
   
-  ---
+  ## Contributing
+
+  ${data.contribution}
   
-  🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
+  ## Tests
+
+  ${data.tests}
+
+  ## Questions
   
-  ## Badges
-  
-  ![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
-  
-  Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-  
-  ## Features
-  
-  If your project has a lot of features, list them here.
-  
-  ## Contact Me
-  
+  Feel free to contact me with any questions you may have!
+
   Github: ${data.github}
   Email: ${data.email}`;
 }

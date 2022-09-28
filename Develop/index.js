@@ -26,6 +26,7 @@ const messages = [
   'What are the steps required to install your project?',
   'Provide instructions and examples for use.',
   'Who contributed to your project and what technologies did you use?',
+  'How can I run your project tests?',
   'What is your Github username?',
   'What is your email address?'
 ];
@@ -36,6 +37,7 @@ const names = [
   'installation',
   'usage',
   'contribution',
+  'tests',
   'github',
   'email'
 ]
@@ -56,6 +58,15 @@ function init() {
 
     questions.push(question);
   }
+
+  const license = {
+    type: 'rawlist',
+    message: 'Choose your license for the options below.',
+    options: ['MIT License', 'GNU GPLv3', 'Apache License 2.0'],
+    name: 'license'
+  }
+
+  questions.push(license);
 
   inquirer
     .prompt(questions)
